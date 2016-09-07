@@ -1,22 +1,29 @@
-var config = {
-	entry:'app/main.js',
-	output:{
-		path:'./',
-		filename:'index.js',
-	},
-	devServer:{
-		inline:true,
-		port:7777,
-	},
-	module:{
-		loaders:[{
-			test:/\.jsx?$\/,
-			exclude:/node_modules/,
-			loader:'babel',
-			query:{
-				presets:['es2015','react']
-			}
-		}]
-	}
+ var path = require('path');
+ //import Path from 'path';
+ var config = {
+   entry: './app/main.js',
+	
+   output: {
+      path:path.resolve(__dirname,'./build'),
+      filename: 'index.js',
+   },
+	
+   devServer: {
+      port: 7777
+   },
+	
+   module: {
+      loaders: [ {
+         test: /\.jsx?$/,
+         exclude: /node_modules/,
+         loader: 'babel',
+			
+         query: {
+            presets: ['es2015', 'react']
+         }
+      }]
+   }
+	
 }
+
 module.exports = config;
